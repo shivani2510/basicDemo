@@ -1,0 +1,16 @@
+<form #loginForm="ngForm" (ngSubmit)="loginForm.valid && onSubmit()" fxLayout="column">
+  <mat-input-container>
+    <input matInput name="userName" placeholder="User Name" [(ngModel)]="user.userName" #userName="ngModel">
+    <div *ngIf="userName.errors && (userName.touched || userName.dirty || loginForm.submitted)">
+      <span [hidden]="!userName.errors.required">Please enter user name</span>
+    </div>
+  </mat-input-container>
+  <mat-input-container>
+    <input matInput name="password" placeholder="Password" type="password" [(ngModel)]="user.password"
+           #password="ngModel">
+    <div *ngIf="password.errors && (password.touched || password.dirty || loginForm.submitted)">
+      <span [hidden]="!password.errors.required">Please enter password</span>
+    </div>
+  </mat-input-container>
+  <button mat-raised-button color="primary">Submit</button>
+</form>
